@@ -1,0 +1,11 @@
+{
+  "name": "honox.dev",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {},
+  "repository": "git@github.com:honojs/honox-website.git",
+  "author": "Yusuke Wada <yusuke@kamawada.com>",
+  "private": true,
+  "license": "MIT",
+  "devDependencies": {}
+}
