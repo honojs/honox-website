@@ -1,19 +1,20 @@
 {
-  "name": "honox.dev",
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite"
-  },
-  "repository": "git@github.com:honojs/honox-website.git",
-  "author": "Yusuke Wada <yusuke@kamawada.com>",
-  "private": true,
-  "license": "MIT",
-  "dependencies": {
-    "hono": "^4.7.1",
-    "honox": "^0.1.34"
-  },
-  "devDependencies": {
-    "vite": "^5.4.14"
-  }
+	"name": "honox.dev",
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite"
+	},
+	"repository": "git@github.com:honojs/honox-website.git",
+	"author": "Yusuke Wada <yusuke@kamawada.com>",
+	"private": true,
+	"license": "MIT",
+	"dependencies": {
+		"hono": "^4.7.1",
+		"honox": "^0.1.34"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"vite": "^5.4.14"
+	}
 }
