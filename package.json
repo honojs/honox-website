@@ -6,7 +6,8 @@
 		"dev": "vite",
 		"build": "vite build",
 		"preview": "wrangler dev",
-		"deploy": "npm run build && wrangler deploy"
+		"deploy": "npm run build && wrangler deploy",
+		"test": "vitest --run"
 	},
 	"repository": "git@github.com:honojs/honox-website.git",
 	"author": "Yusuke Wada <yusuke@kamawada.com>",
@@ -23,6 +24,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
 		"vite": "^5.4.14",
+		"vitest": "^3.0.7",
 		"wrangler": "^3.111.0"
 	},
 	"packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"

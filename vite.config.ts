@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import ssg from '@hono/vite-ssg';
 import honox from 'honox/vite';
@@ -16,4 +17,9 @@ export default defineConfig({
 			remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
 		}),
 	],
+	test: {
+		globals: true,
+		clearMocks: true,
+		testTimeout: 50000,
+	},
 });
