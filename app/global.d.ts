@@ -2,10 +2,8 @@ import {} from 'hono';
 
 type Frontmatter = {
 	title: string;
-	navLabel?: string;
-	publishedAt: string;
-	emoji: string;
-	color: string;
+	nav_title?: string | null;
+	description?: string | null;
 };
 
 declare module 'hono' {

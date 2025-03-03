@@ -1,0 +1,180 @@
+---
+title: Get Started - with Client
+nav_title: with Client
+description:
+---
+
+Let's create an application that includes a client side. Here, we will use hono/jsx/dom.
+
+### Project Structure
+
+Below is the project structure of a minimal application including a client side:
+
+```txt
+.
+├── app
+│   ├── client.ts // client entry file
+│   ├── global.d.ts
+│   ├── islands
+│   │   └── counter.tsx // island component
+│   ├── routes
+│   │   ├── _renderer.tsx
+│   │   └── index.tsx
+│   └── server.ts
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
+```
+
+### Renderer
+
+This is a `_renderer.tsx`, which will load the `/app/client.ts` entry file for the client. It will load the JavaScript file for production according to the variable `import.meta.env.PROD`. And renders the inside of `<HasIslands />` if there are islands on that page.
+
+```tsx
+// app/routes/_renderer.tsx
+import { jsxRenderer } from 'hono/jsx-renderer'
+import { HasIslands } from 'honox/server'
+
+export default jsxRenderer(({ children }) => {
+  return (
+    <html lang='en'>
+      <head>
+        <meta charset='UTF-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        {import.meta.env.PROD ? (
+          <HasIslands>
+            <script type='module' src='/static/client.js'></script>
+          </HasIslands>
+        ) : (
+          <script type='module' src='/app/client.ts'></script>
+        )}
+      </head>
+      <body>{children}</body>
+    </html>
+  )
+})
+```
+
+If you have a manifest file in `dist/.vite/manifest.json`, you can easily write it using `<Script />`.
+
+```tsx
+// app/routes/_renderer.tsx
+import { jsxRenderer } from 'hono/jsx-renderer'
+import { Script } from 'honox/server'
+
+export default jsxRenderer(({ children }) => {
+  return (
+    <html lang='en'>
+      <head>
+        <meta charset='UTF-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <Script src='/app/client.ts' />
+      </head>
+      <body>{children}</body>
+    </html>
+  )
+})
+```
+
+**Note**: Since `<HasIslands />` can slightly affect build performance when used, it is recommended that you do not use it in the development environment, but only at build time. `<Script />` does not cause performance degradation during development, so it's better to use it.
+
+#### nonce Attribute
+
+If you want to add a `nonce` attribute to `<Script />` or `<script />` element, you can use [Security Headers Middleware](https://hono.dev/middleware/builtin/secure-headers).
+
+Define the middleware:
+
+```ts
+// app/routes/_middleware.ts
+import { createRoute } from 'honox/factory'
+import { secureHeaders, NONCE } from 'hono/secure-headers'
+
+secureHeaders({
+  contentSecurityPolicy: {
+    scriptSrc: [NONCE]
+  }
+})
+```
+
+You can get the `nonce` value with `c.get('secureHeadersNonce')`:
+
+```tsx
+// app/routes/_renderer.tsx
+import { jsxRenderer } from 'hono/jsx-renderer'
+import { Script } from 'honox/server'
+
+export default jsxRenderer(({ children }, c) => {
+  return (
+    <html lang='en'>
+      <head>
+        <Script src='/app/client.ts' async nonce={c.get('secureHeadersNonce')} />
+      </head>
+      <body>{children}</body>
+    </html>
+  )
+})
+```
+
+### Client Entry File
+
+A client-side entry file should be in `app/client.ts`. Simply, write `createClient()`.
+
+```ts
+// app/client.ts
+import { createClient } from 'honox/client'
+
+createClient()
+```
+
+### Interactions
+
+If you want to add interactions to your page, create Island components. Islands components should be:
+
+- Placed under `app/islands` directory or named with `$` prefix like `$componentName.tsx`.
+- It should be exported as a `default` or a proper component name that uses camel case but does not contain `_` and is not all uppercase.
+
+For example, you can write an interactive component such as the following counter:
+
+```tsx
+// app/islands/counter.tsx
+import { useState } from 'hono/jsx'
+
+export default function Counter() {
+  const [count, setCount] = useState(0)
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  )
+}
+```
+
+When you load the component in a route file, it is rendered as Server-Side rendering and JavaScript is also sent to the client side.
+
+```tsx
+// app/routes/index.tsx
+import { createRoute } from 'honox/factory'
+import Counter from '../islands/counter'
+
+export default createRoute((c) => {
+  return c.render(
+    <div>
+      <h1>Hello</h1>
+      <Counter />
+    </div>
+  )
+})
+```
+
+**Note**: You cannot access a Context object in Island components. Therefore, you should pass the value from components outside of the Island.
+
+```ts
+import { useRequestContext } from 'hono/jsx-renderer'
+import Counter from '../islands/counter.tsx'
+
+export default function Component() {
+  const c = useRequestContext()
+  return <Counter init={parseInt(c.req.query('count') ?? '0', 10)} />
+}
+```
