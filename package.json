@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite"
+    "dev": "vite",
+    "lint": "eslint app",
+    "lint:fix": "eslint app --fix",
+    "format": "prettier --check --cache \"app/**/*.{js,ts,tsx,md,mdx}\"",
+    "format:fix": "prettier --write --cache --cache-strategy metadata \"app/**/*.{js,ts,tsx,md,mdx}\""
   },
   "repository": "git@github.com:honojs/honox-website.git",
   "author": "Yusuke Wada <yusuke@kamawada.com>",
@@ -14,6 +18,9 @@
     "honox": "^0.1.34"
   },
   "devDependencies": {
+    "@hono/eslint-config": "^1.0.2",
+    "eslint": "^9.21.0",
+    "prettier": "^3.5.3",
     "vite": "^5.4.14"
   }
 }
