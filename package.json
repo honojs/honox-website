@@ -1,31 +1,37 @@
 {
-	"name": "honox.dev",
-	"version": "0.0.0",
-	"type": "module",
-	"scripts": {
-		"dev": "vite",
-		"build": "vite build",
-		"preview": "wrangler dev",
-		"deploy": "npm run build && wrangler deploy",
-		"test": "vitest --run"
-	},
-	"repository": "git@github.com:honojs/honox-website.git",
-	"author": "Yusuke Wada <yusuke@kamawada.com>",
-	"private": true,
-	"license": "MIT",
-	"dependencies": {
-		"@hono/vite-ssg": "^0.1.1",
-		"@mdx-js/rollup": "^3.1.0",
-		"hono": "^4.7.1",
-		"honox": "^0.1.34",
-		"remark-frontmatter": "^5.0.0",
-		"remark-mdx-frontmatter": "^5.0.0"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "^1.9.4",
-		"vite": "^5.4.14",
-		"vitest": "^3.0.7",
-		"wrangler": "^3.111.0"
-	},
-	"packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
+  "name": "honox.dev",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "wrangler dev",
+    "deploy": "npm run build && wrangler deploy",
+    "test": "vitest --run",
+    "lint": "eslint app",
+    "lint:fix": "eslint app --fix",
+    "format": "prettier --check --cache \"app/**/*.{js,ts,tsx,md,mdx}\"",
+    "format:fix": "prettier --write --cache --cache-strategy metadata \"app/**/*.{js,ts,tsx,md,mdx}\""
+  },
+  "repository": "git@github.com:honojs/honox-website.git",
+  "author": "Yusuke Wada <yusuke@kamawada.com>",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "@hono/vite-ssg": "^0.1.1",
+    "@mdx-js/rollup": "^3.1.0",
+    "hono": "^4.7.1",
+    "honox": "^0.1.34",
+    "remark-frontmatter": "^5.0.0",
+    "remark-mdx-frontmatter": "^5.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@hono/eslint-config": "^1.0.2",
+    "eslint": "^9.21.0",
+    "prettier": "^3.5.3",
+    "vite": "^5.4.14",
+    "vitest": "^3.0.7",
+    "wrangler": "^3.111.0"
+  }
 }
