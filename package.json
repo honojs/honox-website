@@ -5,8 +5,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "wrangler dev",
-    "deploy": "npm run build && wrangler deploy",
     "test": "vitest --run",
     "lint": "eslint app",
     "lint:fix": "eslint app --fix",
@@ -30,7 +28,6 @@
     "eslint": "^9.21.0",
     "prettier": "^3.5.3",
     "vite": "^5.4.14",
-    "vitest": "^3.0.7",
-    "wrangler": "^3.111.0"
+    "vitest": "^3.0.7"
   }
 }
