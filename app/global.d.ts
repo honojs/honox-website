@@ -1,23 +1,23 @@
-import {} from 'hono';
+import {} from 'hono'
 
 type Frontmatter = {
-	title: string;
-	nav_title?: string | null;
-	description?: string | null;
-};
+  title: string
+  nav_title?: string | null
+  description?: string | null
+}
 
 declare module 'hono' {
-	interface Env {}
+  interface Env {}
 
-	interface ContextRenderer {
-		// biome-ignore lint/style/useShorthandFunctionType: <explanation>
-		(
-			content: string | Promise<string>,
-			meta?: { frontmatter?: Frontmatter },
-		): Response | Promise<Response>;
-	}
+  interface ContextRenderer {
+    // biome-ignore lint/style/useShorthandFunctionType: <explanation>
+    (
+      content: string | Promise<string>,
+      meta?: { frontmatter?: Frontmatter }
+    ): Response | Promise<Response>
+  }
 }
 
 declare module '*.mdx' {
-	export const frontmatter: Frontmatter;
+  export const frontmatter: Frontmatter
 }
