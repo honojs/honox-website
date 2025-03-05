@@ -13,7 +13,7 @@ export const HeaderLink = ({ href, children, isExternal }: HeaderLinkProps) => {
   return (
     <a
       class={
-        'text-sm font-medium text-gray-800 transition-colors hover:text-gray-900 data-active:text-orange-600 dark:text-gray-400 dark:hover:text-gray-100 dark:data-active:text-orange-400'
+        'text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 data-active:text-orange-600 dark:text-gray-400 dark:hover:text-gray-100 dark:data-active:text-orange-400'
       }
       href={href}
       data-active={req.path.startsWith(href) ? '' : undefined}
