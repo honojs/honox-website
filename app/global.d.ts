@@ -4,6 +4,7 @@ type Frontmatter = {
   title: string
   nav_title?: string | null
   description?: string | null
+  exclude_from_nav?: boolean | null
 }
 
 declare module 'hono' {
