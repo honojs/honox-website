@@ -24,12 +24,12 @@ export default jsxRenderer(({ children, frontmatter }) => {
       </head>
       <body>
         <Header />
-        <main class={'flex gap-8'}>
+        <main class={'relative mx-auto my-12 flex max-w-[1300px] flex-row gap-8 px-8'}>
           <SideNav />
-          <div>
+          <article>
             {frontmatter ? <h1>{frontmatter.title}</h1> : null}
             {children}
-          </div>
+          </article>
         </main>
       </body>
     </html>
