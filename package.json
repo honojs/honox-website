@@ -4,6 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "build": "vite build",
+    "test": "vitest --run",
     "lint": "eslint app",
     "lint:fix": "eslint app --fix",
     "format": "prettier --check --cache \"app/**/*.{js,ts,tsx,md,mdx}\"",
@@ -14,13 +16,18 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
+    "@hono/vite-ssg": "^0.1.1",
+    "@mdx-js/rollup": "^3.1.0",
     "hono": "^4.7.1",
-    "honox": "^0.1.34"
+    "honox": "^0.1.34",
+    "remark-frontmatter": "^5.0.0",
+    "remark-mdx-frontmatter": "^5.0.0"
   },
   "devDependencies": {
     "@hono/eslint-config": "^1.0.2",
     "eslint": "^9.21.0",
     "prettier": "^3.5.3",
-    "vite": "^5.4.14"
+    "vite": "^5.4.14",
+    "vitest": "^3.0.7"
   }
 }
