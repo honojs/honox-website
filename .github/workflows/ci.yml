@@ -6,7 +6,8 @@ on:
     branches: [ '*' ]
 
 jobs:
-  lint-format:
+  main:
+    name: "Main"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,27 +21,7 @@ jobs:
         run: npm run lint
       - name: Format check
         run: npm run format
-  build-check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22.x'
-          cache: 'npm'
-      - name: Dependencies install
-        run: npm ci
-      - name: Build
+      - name: Build check
         run: npm run build
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22.x'
-          cache: 'npm'
-      - name: Dependencies install
-        run: npm ci
-      - name: Test
+      - name: Run Test
         run: npm run test
