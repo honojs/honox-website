@@ -19,10 +19,12 @@
   "dependencies": {
     "@hono/vite-ssg": "^0.1.1",
     "@mdx-js/rollup": "^3.1.0",
+    "@tailwindcss/vite": "^4.0.9",
     "hono": "^4.7.1",
     "honox": "^0.1.34",
     "remark-frontmatter": "^5.0.0",
-    "remark-mdx-frontmatter": "^5.0.0"
+    "remark-mdx-frontmatter": "^5.0.0",
+    "tailwindcss": "^4.0.9"
   },
   "devDependencies": {
     "@hono/eslint-config": "^1.0.2",

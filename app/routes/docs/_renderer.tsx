@@ -1,4 +1,5 @@
 import { jsxRenderer } from 'hono/jsx-renderer'
+import { Link } from 'honox/server'
 import { SideNav } from './_components/SideNav/SideNav'
 
 export default jsxRenderer(({ children, frontmatter }) => {
@@ -15,8 +16,9 @@ export default jsxRenderer(({ children, frontmatter }) => {
             ) : null}
           </>
         ) : null}
+        <Link rel='stylesheet' href='/app/style.css' />
       </head>
-      <body style={'display:flex;gap:2rem;'}>
+      <body class={'flex gap-8'}>
         <SideNav />
         <div>
           {frontmatter ? <h1>{frontmatter.title}</h1> : null}
