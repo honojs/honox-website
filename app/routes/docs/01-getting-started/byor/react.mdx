@@ -37,7 +37,7 @@ declare module '@hono/react-renderer' {
     title?: string
   }
 }
-
+// ---cut---
 export default reactRenderer(({ children, title }) => {
   return (
     <html lang='en'>
@@ -117,7 +117,7 @@ Adjust `tsconfig.json` jsx factory function option.
 {
   'compilerOptions': {
     // ...
-    'jsxImportSource': 'react'
+    "jsxImportSource": "react"
     // ...
   }
 }
