@@ -10,7 +10,7 @@ If you are using the JSX Renderer middleware, you can nest layouts using ` <Layo
 // @filename: app/routes/posts/_renderer.tsx
 /** @jsx jsx */
 /** @jsxImportSource hono/jsx */
-
+// ---cut---
 import { jsxRenderer } from 'hono/jsx-renderer'
 
 export default jsxRenderer(({ children, Layout }) => {
@@ -33,6 +33,7 @@ Let's start with our route handler:
 // @filename: app/routes/nested/index.tsx
 /** @jsx jsx */
 /** @jsxImportSource hono/jsx */
+// ---cut---
 import type { Context } from 'hono'
 declare module 'hono' {
   interface ContextRenderer {
