@@ -30,7 +30,7 @@ The following is an example of `app/routes/_renderer.tsx`.
 // @filename: app/routes/_renderer.tsx
 /** @jsx jsx */
 /** @jsxImportSource react */
-import "vite/types/import-meta.d.ts"
+import 'vite/types/import-meta.d.ts'
 import { reactRenderer } from '@hono/react-renderer'
 declare module '@hono/react-renderer' {
   interface Props {
@@ -115,9 +115,9 @@ Adjust `tsconfig.json` jsx factory function option.
 ```ts
 // @filename: tsconfig.json
 {
-  "compilerOptions": {
+  'compilerOptions': {
     // ...
-    "jsxImportSource": "react"
+    'jsxImportSource': 'react'
     // ...
   }
 }

@@ -55,7 +55,7 @@ Now, let's take a look at our nested renderer:
 // @filename: app/routes/nested/_renderer.tsx
 /** @jsx jsx */
 /** @jsxImportSource hono/jsx */
-import "hono"
+import 'hono'
 declare module 'hono' {
   interface ContextRenderer {
     (
@@ -82,7 +82,7 @@ In this setup, all the props sent to the nested renderer's `<Layout />` are cons
 // @filename: app/routes/_renderer.tsx
 /** @jsx jsx */
 /** @jsxImportSource hono/jsx */
-import "hono"
+import 'hono'
 declare module 'hono' {
   interface ContextRenderer {
     (
