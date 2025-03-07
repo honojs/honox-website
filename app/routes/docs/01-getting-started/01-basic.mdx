@@ -70,6 +70,7 @@ Each route should return an array of `Handler | MiddlewareHandler`. `createRoute
 // @filename: app/routes/index.tsx
 /** @jsx jsx */
 /** @jsxImportSource hono/jsx */
+// ---cut---
 // `createRoute()` helps you create handlers
 import { createRoute } from 'honox/factory'
 
@@ -88,6 +89,7 @@ You can also handle methods other than GET by `export` `POST`, `PUT`, and `DELET
 // @filename: app/routes/index.tsx
 /** @jsx jsx */
 /** @jsxImportSource hono/jsx */
+// ---cut---
 import { createRoute } from 'honox/factory'
 import { getCookie, setCookie } from 'hono/cookie'
 
@@ -183,6 +185,7 @@ declare module 'hono' {
     ): Response
   }
 }
+// ---cut---
 import { jsxRenderer } from 'hono/jsx-renderer'
 
 export default jsxRenderer(({ children, title }) => {
@@ -209,6 +212,7 @@ You can write a custom Not Found page in `_404.tsx`.
 // @filename: app/routes/_404.tsx
 /** @jsx jsx */
 /** @jsxImportSource hono/jsx */
+// ---cut---
 import { NotFoundHandler } from 'hono'
 
 const handler: NotFoundHandler = (c) => {
@@ -226,6 +230,7 @@ You can write a custom Error page in `_error.tsx`.
 // @filename: app/routes/_error.tsx
 /** @jsx jsx */
 /** @jsxImportSource hono/jsx */
+// ---cut---
 import { ErrorHandler } from 'hono'
 
 const handler: ErrorHandler = (e, c) => {
