@@ -7,6 +7,7 @@ export default jsxRenderer(({ children, frontmatter }) => {
       <head>
         <meta charset='UTF-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <link href='https://cdn.jsdelivr.net/npm/@shikijs/twoslash@3.1.0/style-rich.css' rel='stylesheet' />
         {frontmatter ? (
           <>
             <title>{frontmatter.title}</title>
@@ -15,6 +16,7 @@ export default jsxRenderer(({ children, frontmatter }) => {
             ) : null}
           </>
         ) : null}
+
       </head>
       <body style={'display:flex;gap:2rem;'}>
         <SideNav />

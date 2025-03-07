@@ -5,6 +5,8 @@ import honox from 'honox/vite';
 import mdx from '@mdx-js/rollup';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
+import rehypeShiki from '@shikijs/rehype';
+import { rendererRich, transformerTwoslash } from '@shikijs/twoslash';
 
 const entry = './app/server.ts';
 
@@ -15,6 +17,19 @@ export default defineConfig({
 		mdx({
 			jsxImportSource: 'hono/jsx',
 			remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
+			rehypePlugins: [
+				[rehypeShiki, {
+					themes: {
+						light: 'vitesse-light',
+						dark: 'vitesse-dark',
+					},
+					transformers: [
+						transformerTwoslash({
+							renderer: rendererRich()
+						}),
+					],
+				}]
+			]
 		}),
 	],
 	test: {
