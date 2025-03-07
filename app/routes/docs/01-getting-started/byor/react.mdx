@@ -14,7 +14,7 @@ npm i -D @types/react @types/react-dom
 Define the Props that the renderer will receive in `global.d.ts`.
 
 ```ts
-// global.d.ts
+// @filename: global.d.ts
 import '@hono/react-renderer'
 
 declare module '@hono/react-renderer' {
@@ -27,8 +27,16 @@ declare module '@hono/react-renderer' {
 The following is an example of `app/routes/_renderer.tsx`.
 
 ```tsx
-// app/routes/_renderer.tsx
+// @filename: app/routes/_renderer.tsx
+/** @jsx jsx */
+/** @jsxImportSource react */
+import "vite/types/import-meta.d.ts"
 import { reactRenderer } from '@hono/react-renderer'
+declare module '@hono/react-renderer' {
+  interface Props {
+    title?: string
+  }
+}
 
 export default reactRenderer(({ children, title }) => {
   return (
@@ -52,17 +60,18 @@ export default reactRenderer(({ children, title }) => {
 The `app/client.ts` will be like this.
 
 ```ts
-// app/client.ts
+// @filename: app/client.ts
 import { createClient } from 'honox/client'
+import type React from 'react'
 
 createClient({
   hydrate: async (elem, root) => {
     const { hydrateRoot } = await import('react-dom/client')
-    hydrateRoot(root, elem)
+    hydrateRoot(root, elem as any as React.ReactNode) // https://github.com/honojs/honox/issues/87
   },
   createElement: async (type: any, props: any) => {
     const { createElement } = await import('react')
-    return createElement(type, props)
+    return createElement(type, props) as any as Node  // https://github.com/honojs/honox/issues/87
   },
 })
 ```
@@ -70,7 +79,7 @@ createClient({
 Configure react in `vite.config.ts`.
 
 ```ts
-// vite.config.ts
+// @filename: vite.config.ts
 import build from '@hono/vite-build/cloudflare-pages'
 import honox from 'honox/vite'
 import { defineConfig } from 'vite'
@@ -104,12 +113,12 @@ export default defineConfig(({ mode }) => {
 Adjust `tsconfig.json` jsx factory function option.
 
 ```ts
-// tsconfig.json
+// @filename: tsconfig.json
 {
   "compilerOptions": {
-    ...
+    // ...
     "jsxImportSource": "react"
-    ...
+    // ...
   }
 }
 

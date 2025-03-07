@@ -1,5 +1,5 @@
 # prod
-dist/
+/dist/
 
 # dev
 .hono/
@@ -12,6 +12,9 @@ dist/
 .idea/workspace.xml
 .idea/usage.statistics.xml
 .idea/shelf
+
+# tmp
+/vite.config.ts.timestamp-*
 
 # deps
 node_modules/
