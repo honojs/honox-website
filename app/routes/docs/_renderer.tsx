@@ -1,6 +1,7 @@
 import { jsxRenderer } from 'hono/jsx-renderer'
 import { Link, Script } from 'honox/server'
 import { Header } from '../_components/common/Header/Header'
+import { DocsChildPagesList } from './_components/DocsChildPagesList/DocsChildPagesList'
 import { DocsPagination } from './_components/DocsPagination/DocsPagination'
 import { SideNav } from './_components/SideNav/SideNav'
 
@@ -31,6 +32,7 @@ export default jsxRenderer(({ children, frontmatter }) => {
           <article className={'w-full min-w-0'}>
             {frontmatter ? <h1 class={'mb-6 text-4xl font-bold'}>{frontmatter.title}</h1> : null}
             {children}
+            <DocsChildPagesList />
             <DocsPagination />
           </article>
         </main>

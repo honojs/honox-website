@@ -19,7 +19,7 @@ export const DocsPagination = () => {
   return (
     <nav
       className={
-        'mt-8 flex items-center justify-between border-t border-gray-200 pt-8 pb-4 dark:border-gray-700'
+        'my-12 flex items-center justify-between border-t border-gray-200 pt-8 pb-4 dark:border-gray-700'
       }
     >
       {groupedDocs.previous ? (
