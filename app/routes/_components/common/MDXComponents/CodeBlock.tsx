@@ -1,12 +1,3 @@
----
-title: Index
-description:
-exclude_from_nav: true
----
-
-test
-
-```tsx filename=test.tsx
 import type { JSX } from 'hono/jsx'
 import { twMerge } from 'tailwind-merge'
 import { CodeLanguageIcon } from '../../icons/CodeLanguageIcon'
@@ -26,12 +17,12 @@ export const CodeBlock = ({
   return (
     <div
       className={twMerge(
-        'w-full overflow-hidden rounded-lg border border-gray-300 dark:border-gray-700',
+        'my-4 w-full overflow-hidden rounded-lg border border-gray-300 dark:border-gray-700',
         className
       )}
       {...props}
     >
-      {language || filename ? (
+      {language && filename ? (
         <div
           className={
             'flex items-center justify-between border-b border-gray-300 p-4 dark:border-gray-700'
@@ -43,13 +34,9 @@ export const CodeBlock = ({
           </div>
         </div>
       ) : null}
-      <pre className={'overflow-x-auto bg-gray-100 p-4 dark:bg-gray-900'}>
+      <pre className={'overflow-x-auto bg-gray-100 px-2 py-4 dark:bg-gray-900'}>
         <code>{children}</code>
       </pre>
     </div>
   )
 }
-
-```
-
-`test`

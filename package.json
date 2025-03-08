@@ -23,6 +23,7 @@
     "hono": "^4.7.1",
     "honox": "^0.1.34",
     "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
     "remark-mdx-frontmatter": "^5.0.0",
     "tailwind-merge": "^3.0.2",
     "tailwindcss": "^4.0.9"
@@ -32,6 +33,8 @@
     "eslint": "^9.21.0",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.0.0",
     "vite": "^5.4.14",
     "vitest": "^3.0.7",
     "wrangler": "^3.112.0"

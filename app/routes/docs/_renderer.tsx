@@ -7,7 +7,7 @@ export default jsxRenderer(({ children, frontmatter }) => {
   return (
     <html
       lang='en'
-      class={'bg-white text-gray-900 antialiased dark:bg-gray-950 dark:text-gray-100'}
+      class={'scroll-pt-22 bg-white text-gray-900 antialiased dark:bg-gray-950 dark:text-gray-100'}
     >
       <head>
         <meta charset='UTF-8' />
@@ -24,10 +24,10 @@ export default jsxRenderer(({ children, frontmatter }) => {
       </head>
       <body>
         <Header />
-        <main class={'relative mx-auto my-12 flex max-w-[1300px] flex-row gap-8 px-8'}>
+        <main class={'relative mx-auto my-12 flex w-full max-w-[1300px] flex-row gap-8 px-8'}>
           <SideNav />
-          <article>
-            {frontmatter ? <h1>{frontmatter.title}</h1> : null}
+          <article className={'w-full min-w-0'}>
+            {frontmatter ? <h1 class={'mb-6 text-4xl font-bold'}>{frontmatter.title}</h1> : null}
             {children}
           </article>
         </main>

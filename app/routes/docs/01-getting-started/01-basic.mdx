@@ -6,7 +6,7 @@ description:
 
 Let's create a basic HonoX application using hono/jsx as a renderer. This application has no client JavaScript and renders JSX on the server side.
 
-### Project Structure
+## Project Structure
 
 Below is a typical project structure for a HonoX application.
 
@@ -27,7 +27,7 @@ Below is a typical project structure for a HonoX application.
 └── vite.config.ts
 ```
 
-### `vite.config.ts`
+## `vite.config.ts`
 
 The minimum Vite setup for development is as follows:
 
@@ -40,7 +40,7 @@ export default defineConfig({
 })
 ```
 
-### Server Entry File
+## Server Entry File
 
 A server entry file is required. The file should be placed at `app/server.ts`. This file is first called by the Vite during the development or build phase.
 
@@ -58,11 +58,11 @@ showRoutes(app)
 export default app
 ```
 
-### Routes
+## Routes
 
 There are three ways to define routes.
 
-#### 1. `createRoute()`
+### 1. `createRoute()`
 
 Each route should return an array of `Handler | MiddlewareHandler`. `createRoute()` is a helper function to return it. You can write a route for a GET request with `default export`.
 
@@ -107,7 +107,7 @@ export default createRoute((c) => {
 })
 ```
 
-#### 2. Using a Hono instance
+### 2. Using a Hono instance
 
 You can create API endpoints by exporting an instance of the Hono object.
 
@@ -128,7 +128,7 @@ app.get('/:name', (c) => {
 export default app
 ```
 
-#### 3. Just return JSX
+### 3. Just return JSX
 
 Or simply, you can just return JSX.
 
@@ -139,7 +139,7 @@ export default function Home(_c: Context) {
 }
 ```
 
-### Renderer
+## Renderer
 
 Define your renderer - the middleware that does `c.setRender()` - by writing it in `_renderer.tsx`.
 
@@ -182,7 +182,7 @@ export default jsxRenderer(({ children, title }) => {
 
 The `_renderer.tsx` is applied under each directory, and the `app/routes/posts/_renderer.tsx` is applied in `app/routes/posts/*`.
 
-### Not Found page
+## Not Found page
 
 You can write a custom Not Found page in `_404.tsx`.
 
@@ -197,12 +197,11 @@ const handler: NotFoundHandler = (c) => {
 export default handler
 ```
 
-### Error Page
+## Error Page
 
 You can write a custom Error page in `_error.tsx`.
 
-```tsx
-// app/routes/_error.tsx
+```tsx filename=app/routes/_error.tsx
 import { ErrorHandler } from 'hono'
 
 const handler: ErrorHandler = (e, c) => {
