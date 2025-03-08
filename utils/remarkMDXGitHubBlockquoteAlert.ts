@@ -29,7 +29,7 @@ export const remarkMDXGitHubBlockquoteAlert: Plugin = () => {
               },
             }
             node.children[0].children[0].value = node.children[0].children[0].value.replace(
-              /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)]\r\n|\r|\n/,
+              /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)](\r\n|\r|\n)/,
               ''
             )
           }
