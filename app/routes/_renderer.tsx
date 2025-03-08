@@ -1,5 +1,5 @@
 import { jsxRenderer } from 'hono/jsx-renderer'
-import { Link } from 'honox/server'
+import { Link, Script } from 'honox/server'
 import { Header } from './_components/common/Header/Header'
 
 export default jsxRenderer(({ children }) => {
@@ -12,6 +12,7 @@ export default jsxRenderer(({ children }) => {
         <meta charset='UTF-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <Link rel='stylesheet' href='/app/style.css' />
+        <Script src='/app/client.ts' async />
       </head>
       <body>
         <Header />

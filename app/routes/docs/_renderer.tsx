@@ -1,5 +1,5 @@
 import { jsxRenderer } from 'hono/jsx-renderer'
-import { Link } from 'honox/server'
+import { Link, Script } from 'honox/server'
 import { Header } from '../_components/common/Header/Header'
 import { SideNav } from './_components/SideNav/SideNav'
 
@@ -21,6 +21,7 @@ export default jsxRenderer(({ children, frontmatter }) => {
           </>
         ) : null}
         <Link rel='stylesheet' href='/app/style.css' />
+        <Script src='/app/client.ts' async />
       </head>
       <body>
         <Header />
