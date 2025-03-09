@@ -4,11 +4,10 @@ import { ExternalLinkIcon } from '../../icons/ExternalLinkIcon'
 import { AlertAnnotation } from './AlertAnnotation'
 import { AnchorLink } from './AnchorLink'
 import { CodeBlock } from './CodeBlock'
-import { getAnchorId, getAnchorTitle } from './util'
 
 export const useMDXComponents = (): MDXComponents => {
   return {
-    h1: ({ children, id, className, ...props }) => {
+    h1: ({ children, id, title, className, ...props }) => {
       return (
         <h1
           {...props}
@@ -16,14 +15,14 @@ export const useMDXComponents = (): MDXComponents => {
             'group relative mt-10 mb-6 border-t border-t-gray-200 pt-8 text-4xl font-bold dark:border-t-gray-800',
             className
           )}
-          id={id ?? getAnchorId(children)}
+          id={id}
         >
           {children}
-          <AnchorLink anchorId={getAnchorId(children)} anchorTitle={getAnchorTitle(children)} />
+          <AnchorLink anchorId={id} anchorTitle={title} />
         </h1>
       )
     },
-    h2: ({ children, id, className, ...props }) => {
+    h2: ({ children, id, title, className, ...props }) => {
       return (
         <h2
           {...props}
@@ -31,58 +30,58 @@ export const useMDXComponents = (): MDXComponents => {
             'group relative mt-10 mb-6 border-t border-t-gray-200 pt-8 text-3xl font-bold dark:border-t-gray-800',
             className
           )}
-          id={id ?? getAnchorId(children)}
+          id={id}
         >
           {children}
-          <AnchorLink anchorId={getAnchorId(children)} anchorTitle={getAnchorTitle(children)} />
+          <AnchorLink anchorId={id} anchorTitle={title} />
         </h2>
       )
     },
-    h3: ({ children, id, className, ...props }) => {
+    h3: ({ children, id, title, className, ...props }) => {
       return (
         <h3
           {...props}
           className={twMerge('group relative mt-8 mb-3 text-2xl font-bold', className)}
-          id={id ?? getAnchorId(children)}
+          id={id}
         >
           {children}
-          <AnchorLink anchorId={getAnchorId(children)} anchorTitle={getAnchorTitle(children)} />
+          <AnchorLink anchorId={id} anchorTitle={title} />
         </h3>
       )
     },
-    h4: ({ children, id, className, ...props }) => {
+    h4: ({ children, id, title, className, ...props }) => {
       return (
         <h4
           {...props}
           className={twMerge('group relative mt-6 mb-3 text-xl font-bold', className)}
-          id={id ?? getAnchorId(children)}
+          id={id}
         >
           {children}
-          <AnchorLink anchorId={getAnchorId(children)} anchorTitle={getAnchorTitle(children)} />
+          <AnchorLink anchorId={id} anchorTitle={title} />
         </h4>
       )
     },
-    h5: ({ children, id, className, ...props }) => {
+    h5: ({ children, id, title, className, ...props }) => {
       return (
         <h5
           {...props}
           className={twMerge('group relative mt-6 mb-3 text-lg font-bold', className)}
-          id={id ?? getAnchorId(children)}
+          id={id}
         >
           {children}
-          <AnchorLink anchorId={getAnchorId(children)} anchorTitle={getAnchorTitle(children)} />
+          <AnchorLink anchorId={id} anchorTitle={title} />
         </h5>
       )
     },
-    h6: ({ children, id, className, ...props }) => {
+    h6: ({ children, id, title, className, ...props }) => {
       return (
         <h6
           {...props}
           className={twMerge('group relative mt-4 mb-3 text-lg font-semibold', className)}
-          id={id ?? getAnchorId(children)}
+          id={id}
         >
           {children}
-          <AnchorLink anchorId={getAnchorId(children)} anchorTitle={getAnchorTitle(children)} />
+          <AnchorLink anchorId={id} anchorTitle={title} />
         </h6>
       )
     },

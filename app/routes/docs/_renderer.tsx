@@ -2,10 +2,11 @@ import { jsxRenderer } from 'hono/jsx-renderer'
 import { Link, Script } from 'honox/server'
 import { Header } from '../_components/common/Header/Header'
 import { DocsChildPagesList } from './_components/DocsChildPagesList/DocsChildPagesList'
+import { DocsNav } from './_components/DocsNav/DocsNav'
 import { DocsPagination } from './_components/DocsPagination/DocsPagination'
 import { SideNav } from './_components/SideNav/SideNav'
 
-export default jsxRenderer(({ children, frontmatter }) => {
+export default jsxRenderer(({ children, frontmatter, tableOfContents }) => {
   return (
     <html
       lang='en'
@@ -35,6 +36,7 @@ export default jsxRenderer(({ children, frontmatter }) => {
             <DocsChildPagesList />
             <DocsPagination />
           </article>
+          <DocsNav tableOfContents={tableOfContents} />
         </main>
       </body>
     </html>
