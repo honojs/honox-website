@@ -4,6 +4,22 @@ import { getGroupedDocs } from './SideNavUtil'
 describe('SideNavUtil', () => {
   it('Should be GroupedDocs array generated.', () => {
     const docs: Record<string, { frontmatter?: Frontmatter }> = {
+      '../../index.mdx': {
+        frontmatter: {
+          title: 'Home',
+          nav_title: 'Home',
+          description: 'Welcome to HonoX documentation.',
+          exclude_from_nav: true,
+        },
+      },
+      '../../testing.mdx': {
+        frontmatter: {
+          title: 'Testing',
+          nav_title: 'Testing',
+          description: 'Testing description',
+          exclude_from_nav: false,
+        },
+      },
       '../../01-getting-started/01-basic.mdx': {
         frontmatter: {
           title: 'Getting Started - Basic',
@@ -121,6 +137,16 @@ describe('SideNavUtil', () => {
             children: [],
           },
         ],
+      },
+      {
+        id: 'testing',
+        frontmatter: {
+          title: 'Testing',
+          nav_title: 'Testing',
+          description: 'Testing description',
+          exclude_from_nav: false,
+        },
+        children: [],
       },
     ])
   })
