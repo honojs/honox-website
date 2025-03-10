@@ -19,15 +19,26 @@
   "dependencies": {
     "@hono/vite-ssg": "^0.1.1",
     "@mdx-js/rollup": "^3.1.0",
+    "@tailwindcss/vite": "^4.0.9",
+    "hast-util-heading-rank": "^3.0.0",
+    "hast-util-to-string": "^3.0.1",
     "hono": "^4.7.1",
     "honox": "^0.1.34",
     "remark-frontmatter": "^5.0.0",
-    "remark-mdx-frontmatter": "^5.0.0"
+    "remark-gfm": "^4.0.1",
+    "remark-mdx-frontmatter": "^5.0.0",
+    "tailwind-merge": "^3.0.2",
+    "tailwindcss": "^4.0.9"
   },
   "devDependencies": {
     "@hono/eslint-config": "^1.0.2",
+    "@stefanprobst/rehype-extract-toc": "^2.2.1",
     "eslint": "^9.21.0",
     "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "shiki": "^3.1.0",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.0.0",
     "vite": "^5.4.14",
     "vitest": "^3.0.7",
     "wrangler": "^3.112.0"

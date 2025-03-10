@@ -26,6 +26,7 @@ export function getGroupedDocs(docs: Record<string, { frontmatter?: Frontmatter 
     function buildPathMap(currentParts: string[], currentPathMap: TempPathMap) {
       const currentPart = currentParts[0]
       const nextPart = currentParts[1]
+
       if (nextPart === 'index.mdx') {
         if (!currentPathMap[currentPart]) {
           currentPathMap[currentPart] = {
@@ -52,7 +53,9 @@ export function getGroupedDocs(docs: Record<string, { frontmatter?: Frontmatter 
       buildPathMap(currentParts.slice(1), currentPathMap[currentPart].children)
     }
 
-    buildPathMap(parts, tempPathMap)
+    if (value.frontmatter && !value.frontmatter.exclude_from_nav) {
+      buildPathMap(parts, tempPathMap)
+    }
   }
 
   function buildResult(pathMap: TempPathMap): GroupedDocs[] {
