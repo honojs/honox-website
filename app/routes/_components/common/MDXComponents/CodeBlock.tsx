@@ -1,4 +1,5 @@
 import type { JSX } from 'hono/jsx'
+import { createHighlighter, makeSingletonHighlighter } from 'shiki'
 import { twMerge } from 'tailwind-merge'
 import { CodeLanguageIcon } from '../../icons/CodeLanguageIcon'
 import { CopyButton } from './$CopyButton'
@@ -6,15 +7,34 @@ import { CopyButton } from './$CopyButton'
 type CodeBlockProps = {
   language?: string
   filename?: string
+  children: string
 } & JSX.IntrinsicElements['pre']
 
-export const CodeBlock = ({
+const getHighlighter = makeSingletonHighlighter(createHighlighter)
+
+export const CodeBlock = async ({
   children,
   className,
   language,
   filename,
   ...props
 }: CodeBlockProps) => {
+  const highlighter = await getHighlighter({
+    themes: ['one-light', 'one-dark-pro'],
+    langs: ['tsx', 'typescript', 'javascript', 'jsx'],
+  })
+
+  const code =
+    language && typeof children === 'string'
+      ? highlighter.codeToHtml(children, {
+          themes: {
+            light: 'one-light',
+            dark: 'one-dark-pro',
+          },
+          lang: language,
+        })
+      : null
+
   return (
     <div
       className={twMerge(
@@ -43,10 +63,20 @@ export const CodeBlock = ({
           }
         />
       )}
-
-      <pre className={'overflow-x-auto bg-gray-100 px-2 py-4 dark:bg-gray-900'}>
-        <code>{children}</code>
-      </pre>
+      {code ? (
+        <div
+          className={
+            '[&_pre]:overflow-x-auto [&_pre]:px-2 [&_pre]:py-4 dark:[&_pre]:!bg-(--shiki-dark-bg) dark:[&_span]:!bg-(--shiki-dark-bg) dark:[&_span]:!text-(--shiki-dark)'
+          }
+          dangerouslySetInnerHTML={{
+            __html: code,
+          }}
+        ></div>
+      ) : (
+        <pre className={'overflow-x-auto bg-gray-100 px-2 py-4 dark:bg-gray-900'}>
+          {code ? <code className={'block'} /> : children}
+        </pre>
+      )}
     </div>
   )
 }
